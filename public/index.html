@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=320, initial-scale=1"/>
+		<title>jsmpeg streaming</title>
+		<style type="text/css">
+			body {
+				background: #333;
+				text-align: center;
+				margin-top: 10%;
+			}
+			input[id="cameraVerticalAngle"] {
+				-webkit-transform: rotate(90deg);
+				position: relative;
+				top:80px;
+				left: -200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div >
+			<img src="http://169.231.53.107:8080/stream/video.mjpeg">
+		</div>
+		<br>
+		<button onclick="changAngle()">Change angle</button>
+		<br>
+		<div>
+			<input type="range" id="cameraHorizontalAngle" defaultValue="90" min="0" max="180">
+			<input type="range" id="cameraVerticalAngle" defaultValue="90" min="60" max="180">
+		</div>
+		<div>
+			<p id='info'></p>
+		</div>
+		<script>
+			function changAngle() {
+				var x = document.getElementById("cameraHorizontalAngle").value;
+				x = 180 - x;
+				var y = document.getElementById("cameraVerticalAngle").value;
+				y = 180 - y;
+				var xmlhttp;
+				if (window.XMLHttpRequest)
+				{// code for IE7+, Firefox, Chrome, Opera, Safari
+					xmlhttp=new XMLHttpRequest();
+				}
+				else
+				{// code for IE6, IE5
+					xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				xmlhttp.onreadystatechange=function()
+				{
+					if (xmlhttp.readyState==4 && xmlhttp.status==200)
+					{
+						document.getElementById("info").innerHTML= 'Successed! ' + xmlhttp.responseText;
+					}
+				}
+				xmlhttp.open("GET","http://169.231.53.107:3000/pantilt/" + x.toString() +'/' + y.toString(), true);
+				xmlhttp.send();
+			}
+		</script>
+
+	</body>
+</html>

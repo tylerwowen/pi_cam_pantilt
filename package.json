@@ -1,0 +1,33 @@
+{
+  "name": "camApp",
+  "version": "1.0.0",
+  "description": "A Node.js + Express.js app that displays a MJPEG stream from a Raspberry Pi and provides means to control a pan/tilt platform",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tylerwowen/pi_cam_pantilt"
+  },
+  "keywords": [
+    "pi",
+    "camera",
+    "pan",
+    "tilt"
+  ],
+  "author": "Tyler O.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tylerwowen/pi_cam_pantilt/issues"
+  },
+  "homepage": "https://github.com/tylerwowen/pi_cam_pantilt",
+  "dependencies": {
+    "express": "^4.13.1",
+		"body-parser": "~1.13.1",
+    "debug": "~2.2.0",
+    "jade": "~1.11.0",
+    "morgan": "~1.6.1",
+    "serve-favicon": "~2.3.0"
+  }
+}
